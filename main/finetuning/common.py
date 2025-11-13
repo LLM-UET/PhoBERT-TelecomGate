@@ -1,7 +1,7 @@
 # Maximum length of an input sequence after tokenization
 MAX_LEN = 128
 
-BATCH_SIZE = 16
+BATCH_SIZE = 8 # for 16GB GPU, fp32
 
 NUM_EPOCHS = 3
 
