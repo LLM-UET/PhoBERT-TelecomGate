@@ -4,6 +4,7 @@ from ..data import (
     DEFAULT_RAW_PATH,
     DEFAULT_SEGMENTED_PATH,
 )
+from ..emo import process_emojis_and_emoticons_if_enabled
 
 def do_SEGMENT(input_file_path=None, output_file_path=None, silent=False):
     if silent:
@@ -39,6 +40,7 @@ def do_SEGMENT(input_file_path=None, output_file_path=None, silent=False):
                     PRINT("Processing row:", row)
                     text, label = row
                     text = text.replace('\\n', '\n')
+                    text = process_emojis_and_emoticons_if_enabled(text)
 
                     num_text_lines = len(text.split('\n'))
                     proc.stdin.write(text + '\n')
@@ -77,15 +79,18 @@ def segment_text_directly(text: str) -> str:
         bufsize=1            # line-buffered I/O
     )
 
+    text = process_emojis_and_emoticons_if_enabled(text)
+
     proc.stdin.write(text + '\n')
     proc.stdin.flush()
     proc.stdin.close()
 
     segmented_lines: list[str] = []
     while True:
-        segmented_line = proc.stdout.readline().strip()
+        segmented_line = proc.stdout.readline()
         if not segmented_line:
             break
+        segmented_line = segmented_line.strip()
         segmented_lines.append(segmented_line)
 
     return '\n'.join(segmented_lines)
