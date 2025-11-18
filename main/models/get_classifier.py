@@ -38,4 +38,4 @@ def get_classifier(model_dir=None, force_download: bool = False):
             local_files_only=False,
             cache_dir=model_dir,
         )
-    return AutoModelForSequenceClassification.from_pretrained(model_dir)
+    return AutoModelForSequenceClassification.from_pretrained(model_dir, num_labels=NUM_LABELS)
