@@ -1,6 +1,7 @@
 /datasets
 /models
 RDRsegmenter.jar
+docker.env
 
 # https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore
 

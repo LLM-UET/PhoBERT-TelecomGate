@@ -2,6 +2,7 @@
 
 - [PhoBERT Finetuning for Sentiment Classification](#phobert-finetuning-for-sentiment-classification)
   - [Foreword](#foreword)
+  - [Docker](#docker)
   - [Setup](#setup)
     - [Prerequisites](#prerequisites)
     - [Prepare the Python environment](#prepare-the-python-environment)
@@ -19,12 +20,66 @@
 
 ## Foreword
 
-**IF YOU JUST WANT INFERENCE**, just
-follow the instructions in:
+**IF YOU JUST WANT INFERENCE**, there are two options:
 
-- [Setup](#setup)
-- [Inference](#inference)
-- and optionally [RPC Server](#rpc-server)
+1. **Running in Docker:** Simple, quick.
+   
+    Follow the instructions in:
+   
+    - [Docker](#docker)
+
+2. **Running directly:** For development and testing.
+   
+    Follow the instructions in:
+
+    - [Setup](#setup)
+    - [Inference](#inference)
+    - and optionally [RPC Server](#rpc-server)
+
+## Docker
+
+1. Install Docker.
+
+2. Log in to your Kaggle account and obtain the credentials JSON file,
+    [as instructed here](https://github.com/Kaggle/kaggle-api/blob/main/docs/README.md#api-credentials).
+    
+    (Don't worry, the credentials are temporary
+    and won't be baked into the built images.)
+
+3. Open that JSON file, copy the values of
+    `username` and `key`.
+
+4. In this project's root:
+
+    ```sh
+    cp docker.env.example docker.env
+    ```
+
+5. Modify the variables inside the `docker.env`
+    file, pasting the copied values to appropriate
+    variables.
+
+6. Run (still in project root):
+
+    ```sh
+    DOCKER_BUILDKIT=1 \
+    COMPOSE_DOCKER_CLI_BUILD=1 \
+    docker compose build --parallel
+    ```
+
+7. Now that the images are built, you could run
+    them:
+
+    ```sh
+    docker compose up
+    ```
+
+    After that, you could access the RPC
+    server at base URL `http://localhost:8135`.
+
+[Here is the information on how to use the RPC server](#rpc-server)
+(no need to run the commands in that section,
+just see how to `curl` the server).
 
 ## Setup
 
@@ -32,6 +87,7 @@ follow the instructions in:
 
 - Python 3.12+
 - Java 1.8+
+- Kaggle CLI
 
 ### Prepare the Python environment
 
