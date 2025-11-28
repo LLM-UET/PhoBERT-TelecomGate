@@ -1,6 +1,6 @@
-# PhoBERT Finetuning for Sentiment Classification
+# PhoBERT Finetuning for Telecom-Domain Input Classification
 
-- [PhoBERT Finetuning for Sentiment Classification](#phobert-finetuning-for-sentiment-classification)
+- [PhoBERT Finetuning for Telecom-Domain Input Classification](#phobert-finetuning-for-telecom-domain-input-classification)
   - [Foreword](#foreword)
   - [Docker](#docker)
   - [Setup](#setup)

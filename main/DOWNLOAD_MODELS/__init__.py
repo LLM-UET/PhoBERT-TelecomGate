@@ -20,15 +20,15 @@ def do_DOWNLOAD_MODELS_FINETUNED():
 
     import subprocess
 
-    # https://www.kaggle.com/code/laamegg/phobert-sentiment-finetuning
-    # kaggle kernels output laamegg/phobert-sentiment-finetuning -p /path/to/dest
+    # https://www.kaggle.com/code/laamegg/phobert-telecomgate-finetuning
+    # kaggle kernels output laamegg/phobert-telecomgate-finetuning -p /path/to/dest
     try:
         subprocess.run(
             [
                 "kaggle",
                 "kernels",
                 "output",
-                "laamegg/phobert-sentiment-finetuning",
+                "laamegg/phobert-telecomgate-finetuning",
                 "-p",
                 TEMP_KAGGLE_OUTPUT_PATH,
             ],

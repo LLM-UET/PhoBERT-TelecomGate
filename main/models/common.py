@@ -4,7 +4,7 @@ BASE_MODEL_DIR = os.getenv("BASE_MODEL_DIR", "./models/phobert-base-local/models
 
 FINETUNED_MODEL_DIR = os.getenv("FINETUNED_MODEL_DIR", "./models/finetuned")
 
-LABELS = ['Negative', 'Neutral', 'Positive']
+LABELS = [0, 1]
 
 NUM_LABELS = len(LABELS)
 

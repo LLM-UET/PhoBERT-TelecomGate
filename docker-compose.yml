@@ -1,11 +1,11 @@
 services:
-  phobert-sentiment:
+  phobert-telecomgate:
     build:
       context: .
-      dockerfile: ./dockerfiles/phobert-sentiment/Dockerfile
+      dockerfile: ./dockerfiles/phobert-telecomgate/Dockerfile
       secrets:
         - env
-    container_name: phobert-sentiment
+    container_name: phobert-telecomgate
     ports:
       - "8135:8135"
     restart: unless-stopped
