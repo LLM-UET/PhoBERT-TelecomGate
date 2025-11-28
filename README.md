@@ -172,10 +172,11 @@ then edit the variables in `.env`.
 - Example entries in a dataset file:
 
     ```csv
-    "Nạp tiền mà sao chưa thấy vào tài khoản?",Negative
-    "Gói Mimax70 có ổn không?",Neutral
-    "Sao hủy gói F90 không được nhỉ",Negative
-    "Data dùng tẹt ga luôn ^^",Positive
+    "Nạp tiền mà sao chưa thấy vào tài khoản?",true
+    "Gói Mimax70 có ổn không?",true
+    "Sao hủy gói F90 không được nhỉ",true
+    "Data dùng tẹt ga luôn ^^",true
+    "Xin chào các bạn",false
     ```
 
 - Place a dataset file named `data.csv`
@@ -190,7 +191,7 @@ then edit the variables in `.env`.
   remove them both with normal double quotes `"`.
 
 - Also watch out for open/unclosed/lone quotes,
-  e.g. `"Have you finished this sentence yet,Negative`.
+  e.g. `"Have you finished this sentence yet,true`.
 
 ## Input Segmentation
 
@@ -283,19 +284,13 @@ Hôm nay mọi người có vui không ạ?
 Hãy cho phép tôi được giới thiệu bản thân nhé!'
 ```
 
-which should output `Positive`. Or:
+which should output `false`. Or:
 
 ```sh
-curl http://localhost:8135/v1/infer --http1.1 -X POST -H 'Content-Type: text/plain' -d 'Làm ăn cái kiểu gì đấy hả?'
+curl http://localhost:8135/v1/infer --http1.1 -X POST -H 'Content-Type: text/plain' -d 'Bên em có những dịch vụ viễn thông nào?'
 ```
 
-which should output `Negative`. Or:
-
-```sh
-curl http://localhost:8135/v1/infer --http1.1 -X POST -H 'Content-Type: text/plain' -d 'Ừ anh biết rồi, nói chung cũng tạm được :>'
-```
-
-which should output `Neutral` (or `Positive`, depending on training set). Or:
+which should output `true`. Or:
 
 ```sh
 curl -s --write-out "\n\n<<< HTTP Code: %{http_code} >>>\n" http://localhost:8135/v1/infer --http1.1 -X POST
@@ -308,8 +303,8 @@ which should output:
     <<< HTTP Code: 400 >>>
 
 The protocol is, you expect to get 200 and response
-body `Positive`, `Negative`, `Neutral`; or some
-other code, in which case the response body
+body being either `false` or `true`; or some
+other HTTP status code, in which case the response body
 contains the error message.
 
 ## References
