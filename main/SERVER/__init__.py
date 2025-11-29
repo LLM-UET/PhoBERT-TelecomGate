@@ -12,7 +12,7 @@ def run_server(
     port=None,
 ):
     host = host or "0.0.0.0"
-    port = port or 8135
+    port = port or 8136
     from http.server import BaseHTTPRequestHandler, HTTPServer
     from socketserver import ThreadingMixIn
 

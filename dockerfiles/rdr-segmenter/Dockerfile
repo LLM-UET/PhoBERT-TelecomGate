@@ -10,7 +10,7 @@ RUN curl -L -O https://github.com/LLM-UET/RDRsegmenter/releases/download/0.9.1/R
 RUN echo "47d3581e050bd686b9eac4727d4d453a5458d6b843e9b3c618a23f3654bdd7fa  RDRsegmenter.jar" | sha256sum --check
 
 # Expose segmenter port
-EXPOSE 8024
+EXPOSE 8025
 
 # Run the jar
-CMD ["java", "-jar", "RDRsegmenter.jar", "TXT-RPC", "8024"]
+CMD ["java", "-jar", "RDRsegmenter.jar", "TXT-RPC", "8025"]

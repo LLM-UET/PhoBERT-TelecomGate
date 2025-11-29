@@ -7,26 +7,26 @@ services:
         - env
     container_name: phobert-telecomgate
     ports:
-      - "8135:8135"
+      - "8136:8136"
     restart: unless-stopped
     depends_on:
-      - rdrsegmenter
-      # rdrsegmenter:
+      - rdr-segmenter
+      # rdr-segmenter:
       #   condition: service_healthy
     environment:
-      RDRSEGMENTER_BASE_URL: http://rdrsegmenter:8024
+      RDRSEGMENTER_BASE_URL: http://rdr-segmenter:8025
 
-  rdrsegmenter:
+  rdr-segmenter:
     build:
       context: .
-      dockerfile: ./dockerfiles/rdrsegmenter/Dockerfile
-    container_name: rdrsegmenter
+      dockerfile: ./dockerfiles/rdr-segmenter/Dockerfile
+    container_name: rdr-segmenter
     # Maybe no need to make it public
     # ports:
-    #   - "8024:8024"
+    #   - "8025:8025"
     restart: unless-stopped
     # healthcheck:
-    #   test: ["CMD-SHELL", "curl -s http://localhost:8024/v1/segment --http1.1 -X POST -H 'Content-Type: text/plain' -d 'Xin chào các bạn yêu quý! Chúng tôi rất trân trọng tình cảm của các bạn' >/dev/null 2>&1 || exit 1"]
+    #   test: ["CMD-SHELL", "curl -s http://localhost:8025/v1/segment --http1.1 -X POST -H 'Content-Type: text/plain' -d 'Xin chào các bạn yêu quý! Chúng tôi rất trân trọng tình cảm của các bạn' >/dev/null 2>&1 || exit 1"]
     #   interval: 10s
     #   timeout: 5s
     #   retries: 3

@@ -21,7 +21,7 @@ from .common import BASE_MODEL_DIR, NUM_LABELS
     
 #     return model
 
-def get_classifier(model_dir=None, force_download: bool = False):
+def get_classifier(model_dir: str | None = None, force_download: bool = False):
     """
     Load classifier, optionally forcing a behind-the-scenes download.
     """
@@ -34,7 +34,7 @@ def get_classifier(model_dir=None, force_download: bool = False):
     if force_download:
         snapshot_download(
             repo_id="vinai/phobert-base",
-            # force_download=True,
+            force_download=True,
             local_files_only=False,
             cache_dir=model_dir,
         )

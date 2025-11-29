@@ -20,7 +20,7 @@ from .common import BASE_MODEL_DIR
 #     return tokenizer
 
 
-def get_tokenizer(model_dir: str, force_download: bool = False):
+def get_tokenizer(model_dir: str | None = None, force_download: bool = False):
     """
     Load tokenizer, optionally forcing a behind-the-scenes download.
     """
@@ -33,7 +33,7 @@ def get_tokenizer(model_dir: str, force_download: bool = False):
     if force_download:
         snapshot_download(
             repo_id="vinai/phobert-base",
-            # force_download=True,
+            force_download=True,
             local_files_only=False,
             cache_dir=model_dir,
         )

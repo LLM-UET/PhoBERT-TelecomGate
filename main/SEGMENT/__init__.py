@@ -8,7 +8,7 @@ from ..emo import process_emojis_and_emoticons_if_enabled
 import requests
 
 import os
-RDRSEGMENTER_BASE_URL = os.getenv('RDRSEGMENTER_BASE_URL', 'http://localhost:8024')
+RDRSEGMENTER_BASE_URL = os.getenv('RDRSEGMENTER_BASE_URL', 'http://localhost:8025')
 
 def do_SEGMENT(input_file_path=None, output_file_path=None, silent=False):
     if silent:

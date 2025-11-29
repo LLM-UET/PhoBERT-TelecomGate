@@ -34,7 +34,7 @@ RUN --mount=type=secret,id=env \
     uv run -m main download models FINETUNED
 
 # Expose port
-EXPOSE 8135
+EXPOSE 8136
 
 # Run the RPC server
-CMD ["uv", "run", "-m", "main", "serve", "--host", "0.0.0.0", "--port", "8135"]
+CMD ["uv", "run", "-m", "main", "serve", "--host", "0.0.0.0", "--port", "8136"]

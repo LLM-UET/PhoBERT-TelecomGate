@@ -75,7 +75,7 @@
     ```
 
     After that, you could access the RPC
-    server at base URL `http://localhost:8135`.
+    server at base URL `http://localhost:8136`.
 
 [Here is the information on how to use the RPC server](#rpc-server)
 (no need to run the commands in that section,
@@ -140,12 +140,6 @@ This is required so that some stuff
 could use RDRsegmenter via text RPC
 (simple HTTP POST) to segment data,
 as you would see later.
-
-```sh
-java -jar RDRsegmenter.jar TXT-RPC
-```
-
-or, to customize port:
 
 ```sh
 java -jar RDRsegmenter.jar TXT-RPC 8025
@@ -279,7 +273,7 @@ to listen at a different port.
 Test (for default port at localhost):
 
 ```sh
-curl http://localhost:8135/v1/infer --http1.1 -X POST -H 'Content-Type: text/plain' -d 'Xin chào các bạn yêu quý! Chúng tôi rất trân trọng tình cảm của các bạn...
+curl http://localhost:8136/v1/infer --http1.1 -X POST -H 'Content-Type: text/plain' -d 'Xin chào các bạn yêu quý! Chúng tôi rất trân trọng tình cảm của các bạn...
 Hôm nay mọi người có vui không ạ?
 Hãy cho phép tôi được giới thiệu bản thân nhé!'
 ```
@@ -287,13 +281,13 @@ Hãy cho phép tôi được giới thiệu bản thân nhé!'
 which should output `false`. Or:
 
 ```sh
-curl http://localhost:8135/v1/infer --http1.1 -X POST -H 'Content-Type: text/plain' -d 'Bên em có những dịch vụ viễn thông nào?'
+curl http://localhost:8136/v1/infer --http1.1 -X POST -H 'Content-Type: text/plain' -d 'Bên em có những dịch vụ viễn thông nào?'
 ```
 
 which should output `true`. Or:
 
 ```sh
-curl -s --write-out "\n\n<<< HTTP Code: %{http_code} >>>\n" http://localhost:8135/v1/infer --http1.1 -X POST
+curl -s --write-out "\n\n<<< HTTP Code: %{http_code} >>>\n" http://localhost:8136/v1/infer --http1.1 -X POST
 ```
 
 which should output:
